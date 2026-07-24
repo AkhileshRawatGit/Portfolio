@@ -1094,16 +1094,7 @@ body.menu-open {
   font-size: clamp(4rem, 9vw, 7.5rem);
   line-height: 1;
   letter-spacing: -0.03em;
-}
-
-.hero__name::after {
-  display: none !important;
-}
-
-.hero__role {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
+  max-width: 100%;
   font-family: 'Plus Jakarta Sans', 'DM Sans', system-ui, sans-serif;
   font-size: clamp(1.5rem, 3.2vw, 2rem);
   font-weight: 700;
