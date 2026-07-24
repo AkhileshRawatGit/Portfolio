@@ -399,7 +399,7 @@ function initPreloader() {
   if (preloader) {
     setTimeout(() => {
       preloader.classList.add('hidden');
-    }, 600);
+    }, 2000);
   }
   document.body.classList.add('is-loaded');
 }
