@@ -523,7 +523,7 @@ p {
   --font-display: 'Plus Jakarta Sans', system-ui, sans-serif;
   --font-body: 'DM Sans', system-ui, sans-serif;
   --header-h: 72px;
-  --container: min(1280px, 100% - 6rem);
+  --container: min(1280px, 100% - 2rem);
   --radius: 16px;
   --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
@@ -625,7 +625,7 @@ body.menu-open {
   width: 100%;
   max-width: 1400px;
   margin: 0 auto;
-  padding-inline: clamp(1.5rem, 4vw, 3rem);
+  padding-inline: clamp(0rem, 4vw, 3rem);
 }
 
 .hero__grid {
@@ -709,7 +709,7 @@ body.menu-open {
 }
 
 .hero__name {
-  display: block;
+  display: inline-block;
   background: linear-gradient(135deg, #FFB84D 0%, #FF8A00 55%, #E97300 100%);
   background-size: 200% 200%;
   -webkit-background-clip: text;
@@ -1131,12 +1131,13 @@ body.menu-open {
   }
 
   .hero__title {
-    font-size: clamp(2rem, 8vw, 3rem) !important;
+    font-size: clamp(1.75rem, 7vw, 3rem) !important;
     margin-bottom: 0.5rem;
   }
 
   .hero__name {
-    font-size: 1em !important;
+    font-size: 1.05em !important;
+    display: block;
   }
 
   .hero__role {
