@@ -1,0 +1,1296 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Akhilesh Rawat — Aspiring Software Engineer & Java Backend Developer from Dehradun. Building scalable applications with Spring Boot, REST APIs, and clean architecture." />
+  <title>Akhilesh Rawat · Software Engineer & Java Backend Developer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800;900&family=Fira+Code:wght@400;500;600&family=DM+Sans:wght@400;500;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="/styles.css" />
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    /* Additional Hero Styles */
+    .mono {
+      font-family: 'JetBrains Mono', 'Fira Code', monospace;
+    }
+
+    ::selection {
+      background: rgba(255, 138, 0, 0.3);
+      color: #fff;
+    }
+
+    /* Grid dot background */
+    .grid-bg {
+      background-image: radial-gradient(rgba(255, 138, 0, 0.08) 1px, transparent 1px);
+      background-size: 28px 28px;
+    }
+
+    /* Ambient glow */
+    .glow-blob {
+      position: absolute;
+      border-radius: 9999px;
+      filter: blur(80px);
+      pointer-events: none;
+    }
+
+    /* Orange gradient text */
+    .orange-gradient-text {
+      background: linear-gradient(180deg, #FFB84D 0%, #FF8A00 55%, #E97300 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 0 24px rgba(255, 138, 0, 0.35));
+    }
+
+    /* Buttons */
+    .orange-btn {
+      background: linear-gradient(180deg, #FFA23A 0%, #FF8A00 100%);
+      box-shadow:
+        0 0 0 1px rgba(255, 165, 60, 0.6),
+        0 10px 30px -6px rgba(255, 138, 0, 0.55),
+        0 0 60px -10px rgba(255, 138, 0, 0.6);
+      transition: transform .25s ease, filter .25s ease, box-shadow .25s ease;
+    }
+
+    .orange-btn:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.08);
+      box-shadow:
+        0 0 0 1px rgba(255, 180, 80, 0.75),
+        0 14px 38px -6px rgba(255, 138, 0, 0.7),
+        0 0 80px -8px rgba(255, 138, 0, 0.75);
+    }
+
+    .outline-btn {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 138, 0, 0.35);
+      transition: border-color .25s ease, background .25s ease, transform .25s ease;
+    }
+
+    .outline-btn:hover {
+      border-color: rgba(255, 165, 60, 0.85);
+      background: rgba(255, 138, 0, 0.08);
+      transform: translateY(-2px);
+    }
+
+    .dark-btn {
+      background: #0e1220;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      transition: border-color .25s ease, background .25s ease, transform .25s ease;
+    }
+
+    .dark-btn:hover {
+      border-color: rgba(255, 165, 60, 0.6);
+      background: #12172a;
+      transform: translateY(-2px);
+    }
+
+    /* Availability pill */
+    .avail-pill {
+      border: 1px solid rgba(255, 138, 0, 0.45);
+      background: rgba(255, 138, 0, 0.04);
+      border-radius: 9999px;
+      transition: background .25s ease, border-color .25s ease;
+    }
+
+    .avail-pill:hover {
+      background: rgba(255, 138, 0, 0.08);
+      border-color: rgba(255, 165, 60, 0.7);
+    }
+
+    /* Pulse dot on briefcase */
+    .pulse-dot {
+      position: relative;
+    }
+
+    .pulse-dot::after {
+      content: "";
+      position: absolute;
+      inset: -4px;
+      border-radius: 50%;
+      background: rgba(255, 138, 0, 0.35);
+      animation: pulse 1.8s ease-out infinite;
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(0.6);
+        opacity: 0.9;
+      }
+
+      100% {
+        transform: scale(1.8);
+        opacity: 0;
+      }
+    }
+
+    /* Code window */
+    .code-window {
+      position: relative;
+      background: linear-gradient(180deg, rgba(12, 15, 28, 0.9) 0%, rgba(8, 10, 20, 0.95) 100%);
+      border: 1px solid rgba(255, 138, 0, 0.35);
+      border-radius: 14px;
+      box-shadow:
+        inset 0 0 0 1px rgba(255, 138, 0, 0.15),
+        0 30px 80px -20px rgba(255, 138, 0, 0.35),
+        0 0 120px -30px rgba(255, 138, 0, 0.45);
+      overflow: hidden;
+    }
+
+    .code-window-ghost {
+      position: absolute;
+      top: -14px;
+      right: -14px;
+      width: 100%;
+      height: 100%;
+      border: 1px solid rgba(255, 138, 0, 0.25);
+      border-radius: 14px;
+      box-shadow: 0 0 60px -20px rgba(255, 138, 0, 0.35);
+    }
+
+    .code-sidebar {
+      border-right: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .sidebar-icon {
+      color: rgba(255, 255, 255, 0.35);
+      transition: color .2s ease;
+      cursor: pointer;
+    }
+
+    .sidebar-icon:hover,
+    .sidebar-icon.active {
+      color: #FF8A00;
+    }
+
+    /* Syntax colors */
+    .tk-key {
+      color: #ff6188;
+    }
+
+    .tk-type {
+      color: #78dce8;
+    }
+
+    .tk-fn {
+      color: #a9dc76;
+    }
+
+    .tk-str {
+      color: #ffd866;
+    }
+
+    .tk-var {
+      color: #ffffff;
+    }
+
+    .tk-punc {
+      color: #b8b8b8;
+    }
+
+    .tk-line {
+      color: rgba(255, 255, 255, 0.25);
+      user-select: none;
+    }
+
+    /* Corner code badge */
+    .corner-badge {
+      background: #0b0e1a;
+      border: 1px solid rgba(255, 138, 0, 0.5);
+      border-radius: 12px;
+      box-shadow: 0 0 30px -6px rgba(255, 138, 0, 0.5);
+    }
+
+    /* Scroll arrow */
+    .scroll-arrow {
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+
+      0%,
+      100% {
+        transform: translateY(0);
+        opacity: .7;
+      }
+
+      50% {
+        transform: translateY(6px);
+        opacity: 1;
+      }
+    }
+
+    /* Entrance animations */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(18px);
+      animation: fadeUp .7s ease forwards;
+    }
+
+    .fade-in-right {
+      opacity: 0;
+      transform: translateX(28px);
+      animation: fadeInRight .9s ease .2s forwards;
+    }
+
+    .delay-1 {
+      animation-delay: .05s;
+    }
+
+    .delay-2 {
+      animation-delay: .15s;
+    }
+
+    .delay-3 {
+      animation-delay: .25s;
+    }
+
+    .delay-4 {
+      animation-delay: .35s;
+    }
+
+    .delay-5 {
+      animation-delay: .45s;
+    }
+
+    .delay-6 {
+      animation-delay: .55s;
+    }
+
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInRight {
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    /* Hero Section Responsive Grid */
+    .hero {
+      position: relative;
+      padding: calc(var(--header-h) + 2rem) 0 4rem;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+    }
+
+    /* Animated Starfield Background */
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(2px 2px at 20% 30%, rgba(255, 255, 255, 0.8), transparent),
+        radial-gradient(2px 2px at 60% 70%, rgba(255, 255, 255, 0.6), transparent),
+        radial-gradient(1px 1px at 50% 50%, rgba(255, 255, 255, 0.4), transparent),
+        radial-gradient(1px 1px at 80% 10%, rgba(255, 255, 255, 0.5), transparent),
+        radial-gradient(2px 2px at 90% 60%, rgba(255, 255, 255, 0.7), transparent),
+        radial-gradient(1px 1px at 33% 90%, rgba(255, 255, 255, 0.3), transparent),
+        radial-gradient(1px 1px at 15% 80%, rgba(255, 255, 255, 0.4), transparent);
+      background-size: 200% 200%;
+      background-position: 0% 0%;
+      animation: stars-move 60s linear infinite;
+      opacity: 0.4;
+      pointer-events: none;
+    }
+
+    /* Additional star layers */
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(1px 1px at 40% 20%, rgba(255, 138, 0, 0.5), transparent),
+        radial-gradient(1px 1px at 70% 80%, rgba(255, 138, 0, 0.3), transparent),
+        radial-gradient(1px 1px at 10% 40%, rgba(255, 138, 0, 0.4), transparent),
+        radial-gradient(1px 1px at 85% 35%, rgba(255, 138, 0, 0.3), transparent),
+        radial-gradient(1px 1px at 25% 65%, rgba(255, 138, 0, 0.2), transparent);
+      background-size: 250% 250%;
+      background-position: 0% 0%;
+      animation: stars-move 80s linear infinite reverse;
+      opacity: 0.3;
+      pointer-events: none;
+    }
+
+    @keyframes stars-move {
+      0% {
+        background-position: 0% 0%;
+      }
+
+      100% {
+        background-position: 100% 100%;
+      }
+    }
+
+    .hero .container {
+      width: 100%;
+      max-width: var(--container);
+      margin: 0 auto;
+      padding-inline: max(1.5rem, 3vw);
+      position: relative;
+      z-index: 10;
+    }
+
+    .hero__grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3rem;
+      align-items: center;
+      justify-items: center;
+    }
+
+    .hero__content {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      width: 100%;
+    }
+
+    .hero__title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: clamp(2.5rem, 5.5vw, 4rem);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      color: #ffffff;
+      margin-bottom: 0rem;
+      margin-top: 1.5rem;
+    }
+
+    .hero__name {
+      display: block;
+      background: linear-gradient(135deg, #FFB84D 0%, #FF8A00 55%, #E97300 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 900;
+      font-size: 1em;
+      line-height: 1.1;
+      margin-top: 0.25rem;
+    }
+
+    .hero__code-wrapper {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      width: 100%;
+    }
+
+    .code-window-container {
+      position: relative;
+      width: 100%;
+      max-width: 700px;
+    }
+
+    .code-window__header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.875rem 1.25rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .code-window__dots {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-left: 0.25rem;
+    }
+
+    .code-window__dots span {
+      width: 0.75rem;
+      height: 0.75rem;
+      border-radius: 50%;
+    }
+
+    .code-window__body {
+      display: flex;
+    }
+
+    .code-sidebar {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+      padding: 1.5rem 1rem;
+    }
+
+    .code-window__code {
+      flex: 1;
+      padding: 1.25rem;
+      font-size: 0.875rem;
+      line-height: 2;
+      overflow-x: auto;
+    }
+
+    .code-window__code .tk-line {
+      display: inline-block;
+      width: 1.5rem;
+      text-align: right;
+      padding-right: 0.75rem;
+    }
+
+    .corner-badge {
+      position: absolute;
+      bottom: -1.5rem;
+      right: -1.5rem;
+      width: 4rem;
+      height: 4rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    @media (min-width: 1024px) {
+      .hero__grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        justify-items: stretch;
+      }
+
+      .hero__content {
+        align-items: flex-start;
+      }
+
+      .hero__code-wrapper {
+        justify-content: flex-end;
+      }
+    }
+
+    /* Responsive Typography */
+    @media (max-width: 1200px) {
+      .hero__grid {
+        gap: 2.5rem;
+      }
+
+      .code-window-container {
+        max-width: 550px;
+      }
+    }
+
+    @media (max-width: 1024px) {
+      .hero__grid {
+        grid-template-columns: 1fr !important;
+        gap: 3rem;
+      }
+
+      .hero__content {
+        text-align: center;
+        align-items: center;
+      }
+
+      .hero__actions {
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        padding: 2rem 0;
+        min-height: auto;
+      }
+
+      .hero__title {
+        font-size: clamp(2rem, 8vw, 3rem) !important;
+        margin-bottom: 1rem;
+      }
+
+      .hero__name {
+        font-size: 1em !important;
+      }
+
+      .hero__role {
+        font-size: clamp(1rem, 4vw, 1.25rem) !important;
+        margin-bottom: 0.7rem;
+      }
+
+      .hero__tagline {
+        font-size: clamp(0.875rem, 3vw, 1rem) !important;
+        margin-bottom: 0.7rem;
+      }
+
+      .avail-pill span:last-child {
+        font-size: 0.625rem !important;
+        letter-spacing: 0.1em;
+      }
+
+      .code-window-container {
+        max-width: 100% !important;
+      }
+
+      .hero__actions {
+        flex-direction: column;
+        width: 100%;
+        gap: 0.75rem !important;
+      }
+
+      .hero__actions a {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .code-window__code {
+        font-size: 0.75rem !important;
+        padding: 1rem !important;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero__title {
+        font-size: 1.75rem !important;
+        line-height: 1.2;
+      }
+
+      .hero__role {
+        font-size: 0.9rem !important;
+      }
+
+      .hero__tagline {
+        font-size: 0.875rem !important;
+      }
+
+      .code-sidebar {
+        gap: 1rem !important;
+        padding: 1rem 0.5rem !important;
+      }
+
+      .code-sidebar svg {
+        width: 16px !important;
+        height: 16px !important;
+      }
+
+      .code-window__code {
+        font-size: 0.65rem !important;
+        padding: 0.75rem !important;
+        line-height: 1.8;
+      }
+
+      .corner-badge {
+        width: 3rem !important;
+        height: 3rem !important;
+        bottom: -1rem !important;
+        right: -1rem !important;
+      }
+
+      .corner-badge svg {
+        width: 20px !important;
+        height: 20px !important;
+      }
+
+      .avail-pill {
+        padding: 0.5rem 1rem !important;
+      }
+
+      .status-badge-icon {
+        width: 20px !important;
+        height: 20px !important;
+      }
+
+      .status-badge-icon svg {
+        width: 12px !important;
+        height: 12px !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Preloader -->
+  <div class="preloader" id="preloader">
+    <div class="preloader__content">
+      <div class="preloader__logo">AR</div>
+      <div class="preloader__bar"></div>
+      <p class="preloader__text">Loading awesome stuff...</p>
+    </div>
+  </div>
+
+  <div class="scroll-progress" aria-hidden="true"><span id="scroll-progress"></span></div>
+  <div class="bg-grid" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+  <canvas id="particles" aria-hidden="true"></canvas>
+
+  <header class="header" id="top">
+    <div class="container header__inner">
+      <a href="#top" class="logo" aria-label="Home">AR<span>.</span></a>
+      <nav class="nav" aria-label="Main">
+        <a href="#about" data-nav="about" class="is-active">About</a>
+        <a href="#skills" data-nav="skills">Skills</a>
+        <a href="#projects" data-nav="projects">Projects</a>
+        <a href="#experience" data-nav="experience">Experience</a>
+        <a href="#contact" class="nav__cta" data-nav="contact">Contact</a>
+      </nav>
+      <button type="button" class="menu-toggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-nav">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section class="hero" id="hero">
+      <div class="container">
+        <div class="hero__grid">
+
+          <!-- LEFT COLUMN -->
+          <div class="reveal-left" style="position: relative;">
+            <!-- Availability Badge -->
+            <div class="avail-pill fade-up delay-1"
+              style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.45rem 0.95rem;">
+              <span class="pulse-dot"
+                style="display: inline-flex; align-items: center; justify-content: center; width: 1rem; height: 1rem; border-radius: 50%; background: rgba(255,138,0,0.15);">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor" style="color: #FF8A00;">
+                  <path
+                    d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z" />
+                </svg>
+              </span>
+              <span style="font-size: 0.65rem; letter-spacing: 0.16em; font-weight: 600; color: #FF8A00;">
+                AVAILABLE FOR INTERNSHIPS &amp; FULL-TIME ROLES
+              </span>
+            </div>
+
+            <!-- Main Heading -->
+            <h1 class="hero__title">
+              Hi, I'm
+              <span class="hero__name">Akhilesh<br />Rawat</span>
+            </h1>
+
+            <!-- Role -->
+            <p class="hero__role" style="margin-top: 1rem; font-family: 'Plus Jakarta Sans', sans-serif;">
+              <span class="role-pipe">|</span> <span id="typing">Java Developer</span>
+            </p>
+
+            <!-- Description -->
+            <p class="fade-up delay-5"
+              style="margin-top: 1.25rem; max-width: 560px; font-size: 1.125rem; line-height: 1.85; color: rgba(255,255,255,0.65);">
+              I build scalable backend applications using Java, Spring Boot, and MySQL — focused on clean architecture,
+              secure APIs, and efficient system design.
+            </p>
+
+            <!-- Action Buttons -->
+            <div class="fade-up delay-6"
+              style="margin-top: 3rem; display: flex; flex-wrap: wrap; align-items: center; gap: 0.65rem;">
+              <a href="#projects" class="orange-btn"
+                style="display: inline-flex; align-items: center; gap: 0.65rem; font-weight: 600; font-size: 0.9rem; padding: 0.85rem 1.5rem; border-radius: 9999px; color: #1a0e00; text-decoration: none; white-space: nowrap;">
+                <span>View Projects</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+              </a>
+
+              <a href="/Software_Engineer.pdf" download="Akhilesh_Rawat_Resume.pdf" class="dark-btn"
+                style="display: inline-flex; align-items: center; gap: 0.65rem; font-weight: 500; font-size: 0.9rem; padding: 0.85rem 1.5rem; border-radius: 9999px; color: rgba(255,255,255,0.9); text-decoration: none; white-space: nowrap;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round" style="color: #FF8A00;">
+                  <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3" />
+                </svg>
+                <span>Download Resume</span>
+              </a>
+
+              <a href="#contact" class="outline-btn"
+                style="display: inline-flex; align-items: center; font-weight: 500; font-size: 0.9rem; padding: 0.85rem 1.5rem; border-radius: 9999px; color: rgba(255,255,255,0.9); text-decoration: none; white-space: nowrap;">
+                Contact Me
+              </a>
+            </div>
+          </div>
+
+          <!-- RIGHT COLUMN: Code Editor -->
+          <div class="reveal-right" style="position: relative; display: flex; justify-content: center;">
+            <div style="position: relative; width: 100%; max-width: 700px;">
+              <!-- Ghost shadow -->
+              <div class="code-window-ghost"></div>
+
+              <!-- Main code window -->
+              <div class="code-window">
+                <!-- Top bar -->
+                <div
+                  style="display: flex; align-items: center; gap: 0.75rem; padding: 0.875rem 1.25rem; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                    stroke-linecap="round" stroke-linejoin="round" style="color: rgba(255,255,255,0.5);">
+                    <path d="m15 18-6-6 6-6" />
+                  </svg>
+                  <div style="display: flex; align-items: center; gap: 0.5rem; margin-left: 0.25rem;">
+                    <span style="width: 0.75rem; height: 0.75rem; border-radius: 50%; background: #27C93F;"></span>
+                    <span style="width: 0.75rem; height: 0.75rem; border-radius: 50%; background: #FF5F56;"></span>
+                    <span style="width: 0.75rem; height: 0.75rem; border-radius: 50%; background: #FFBD2E;"></span>
+                  </div>
+                </div>
+
+                <div style="display: flex;">
+                  <!-- Sidebar -->
+                  <div class="code-sidebar"
+                    style="display: flex; flex-direction: column; align-items: center; gap: 1.5rem; padding: 1.5rem 1rem;">
+                    <svg class="sidebar-icon active" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                      stroke="#FF8A00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="m18 16 4-4-4-4" />
+                      <path d="m6 8-4 4 4 4" />
+                      <path d="m14.5 4-5 16" />
+                    </svg>
+                    <svg class="sidebar-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                      <polyline points="9 22 9 12 15 12 15 22" />
+                    </svg>
+                    <svg class="sidebar-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+                      <circle cx="12" cy="7" r="4" />
+                    </svg>
+                    <svg class="sidebar-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path
+                        d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z" />
+                    </svg>
+                    <svg class="sidebar-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <rect width="20" height="16" x="2" y="4" rx="2" />
+                      <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+                    </svg>
+                  </div>
+                  <!-- Code area -->
+                  <div class="code-window__code">
+                    <div class="code-line"><span class="tk-line">1</span><span class="code-txt"><span
+                          class="tk-key">public</span> <span class="tk-key">class</span> <span
+                          class="tk-type">Developer</span> <span class="tk-punc">{</span></span></div>
+                    <div class="code-line"><span class="tk-line">2</span><span class="code-txt indent-1"><span
+                          class="tk-key">private</span> <span class="tk-type">String</span> <span
+                          class="tk-var">name</span> <span class="tk-punc">=</span> <span class="tk-str">"Akhilesh Rawat"</span><span class="tk-punc">;</span></span></div>
+                    <div class="code-line"><span class="tk-line">3</span><span class="code-txt indent-1"><span
+                          class="tk-key">private</span> <span class="tk-type">String</span> <span
+                          class="tk-var">role</span> <span class="tk-punc">=</span> <span class="tk-str">"Java Developer"</span><span class="tk-punc">;</span></span></div>
+                    <div class="code-line"><span class="tk-line">4</span><span class="code-txt"></span></div>
+                    <div class="code-line"><span class="tk-line">5</span><span class="code-txt indent-1"><span
+                          class="tk-key">public</span> <span class="tk-type">void</span> <span
+                          class="tk-fn">build</span><span class="tk-punc">()</span> <span
+                          class="tk-punc">{</span></span></div>
+                    <div class="code-line"><span class="tk-line">6</span><span class="code-txt indent-2"><span
+                          class="tk-type">System</span><span class="tk-punc">.</span><span
+                          class="tk-var">out</span><span class="tk-punc">.</span><span class="tk-fn">println</span><span
+                          class="tk-punc">(</span><span class="tk-str">"Building scalable applications"</span><span
+                          class="tk-punc">);</span></span></div>
+                    <div class="code-line"><span class="tk-line">7</span><span class="code-txt indent-1"><span
+                          class="tk-punc">}</span></span></div>
+                    <div class="code-line"><span class="tk-line">8</span><span class="code-txt"></span></div>
+                    <div class="code-line"><span class="tk-line">9</span><span class="code-txt indent-1"><span
+                          class="tk-key">public</span> <span class="tk-key">static</span> <span
+                          class="tk-type">void</span> <span class="tk-fn">main</span><span class="tk-punc">(</span><span
+                          class="tk-type">String</span><span class="tk-punc">[]</span> <span
+                          class="tk-var">args</span><span class="tk-punc">)</span> <span class="tk-punc">{</span></span>
+                    </div>
+                    <div class="code-line"><span class="tk-line">10</span><span class="code-txt indent-2"><span
+                          class="tk-type">Developer</span> <span class="tk-var">dev</span> <span
+                          class="tk-punc">=</span> <span class="tk-key">new</span> <span
+                          class="tk-fn">Developer</span><span class="tk-punc">();</span></span></div>
+                    <div class="code-line"><span class="tk-line">11</span><span class="code-txt indent-2"><span
+                          class="tk-var">dev</span><span class="tk-punc">.</span><span class="tk-fn">build</span><span
+                          class="tk-punc">();</span></span></div>
+                    <div class="code-line"><span class="tk-line">12</span><span class="code-txt indent-1"><span
+                          class="tk-punc">}</span></span></div>
+                    <div class="code-line"><span class="tk-line">13</span><span class="code-txt"><span
+                          class="tk-punc">}</span></span></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Corner code badge -->
+              <div class="corner-badge"
+                style="position: absolute; bottom: -1.5rem; right: -1.5rem; width: 4rem; height: 4rem; display: flex; align-items: center; justify-content: center;">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FF8A00" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="m18 16 4-4-4-4" />
+                  <path d="m6 8-4 4 4 4" />
+                  <path d="m14.5 4-5 16" />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Scroll Down -->
+        <!-- <div style="margin-top: 6rem; display: flex; flex-direction: column; align-items: center; gap: 0.75rem;">
+            <span style="font-size: 0.6875rem; letter-spacing: 0.35em; color: rgba(255,255,255,0.6); font-weight: 500;">SCROLL DOWN</span>
+            <svg class="scroll-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FF8A00" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m6 9 6 6 6-6"/>
+            </svg>
+          </div> -->
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="container about">
+        <div class="section-label reveal-left ">About Me</div>
+        <h2 class="about__heading reveal-left">
+         Every Line of Code Has a Purpose.
+        </h2>
+        <div class="about__grid">
+          <!-- Profile Image -->
+          <div class="about__image reveal-left">
+            <div class="profile-card">
+              <div class="profile-card__glow"></div>
+              <img src="/akhilesh.jpeg" alt="Akhilesh Rawat" class="profile-img" />
+              <div class="profile-ring"></div>
+              <div class="profile-ring profile-ring--2"></div>
+            </div>
+          </div>
+
+          <div class="about__body reveal-right">
+            <p>
+              I'm <strong>Akhilesh Rawat</strong>, a backend engineer focused on building robust systems that work at
+              scale.
+            </p>
+            <p>
+              My core strengths are designing RESTful APIs, optimizing database queries, and implementing authentication
+              &amp; authorization flows with Spring Security. I care about clean code, solid system design patterns, and
+              writing software that's not just functional — but maintainable and efficient.
+            </p>
+            <p>
+              I'm currently building <strong>MediConnect</strong>, a healthcare platform handling real transactions.
+              I've architected the entire backend — integrating Razorpay for payments, Cloudinary for storage, and
+              implementing role-based access control. This project taught me how production systems actually work: error
+              handling, logging, performance optimization, and scalability.
+            </p>
+            <p>
+              Beyond coding, I solve DSA problems regularly to sharpen my algorithmic thinking. I believe in continuous
+              learning and writing code that matters — and I'm actively looking for backend development roles where I
+              can build systems people rely on.
+            </p>
+            <!-- <ul class="about__facts">
+                <li><strong>Location</strong> Dehradun, Uttarakhand</li>
+                <li><strong>Focus</strong> Java · Spring Boot · System Design · DSA</li>
+                <li><strong>Role</strong> Web Master, ACM Student Chapter (SRHU)</li>
+                <li><strong>Status</strong> Open to Internships & Full-time Opportunities</li>
+              </ul> -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="skills">
+      <div class="container">
+        <div class="section-label reveal-left">Skills</div>
+        <h2 class="section-title reveal-left">Technical Stack</h2>
+        <p class="section-desc reveal-left">
+          Technologies and tools I use to build scalable, secure backend applications
+        </p>
+
+        <div class="tech-stack-modern">
+          <!-- Programming Languages -->
+          <div class="tech-category reveal-left">
+            <h3 class="tech-category__title">Programming Languages</h3>
+            <div class="tech-items">
+              <div class="tech-item">
+                <div class="tech-item__icon">
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg"
+                    alt="C++" />
+                </div>
+                <span class="tech-item__name">C++</span>
+              </div>
+              <div class="tech-item">
+                <div class="tech-item__icon">
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java" />
+                </div>
+                <span class="tech-item__name">Java</span>
+              </div>
+              <div class="tech-item">
+                <div class="tech-item__icon">
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg" alt="C" />
+                </div>
+                <span class="tech-item__name">C</span>
+              </div>
+              <div class="tech-item">
+                <div class="tech-item__icon">
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"
+                    alt="Python" />
+                </div>
+                <span class="tech-item__name">Python</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Backend & Frameworks -->
+          <div class="tech-category reveal-right">
+            <h3 class="tech-category__title">Backend & Frameworks</h3>
+            <div class="tech-items">
+              <div class="tech-item">
+                <div class="tech-item__icon">
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg"
+                    alt="Spring Boot" />
+                </div>
+                <span class="tech-item__name">Spring Boot</span>
+              </div>
+              <div class="tech-item">
+                <div class="tech-item__icon">
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg"
+                    alt="Spring Data JPA" />
+                </div>
+                <span class="tech-item__name">Spring Data JPA</span>
+              </div>
+              <div class="tech-item">
+                <div class="tech-item__icon">
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/hibernate/hibernate-original.svg"
+                    alt="Hibernate" />
+                </div>
+                <span class="tech-item__name">Hibernate</span>
+              </div>
+              <div class="tech-item">
+                <div class="tech-item__icon">
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg"
+                    alt="Spring Security" />
+                </div>
+                <span class="tech-item__name">Spring Security</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Database & Caching -->
+          <div class="tech-category reveal-left">
+            <h3 class="tech-category__title">Database & Caching</h3>
+            <div class="tech-items">
+              <div class="tech-item">
+                <div class="tech-item__icon">
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL" />
+                </div>
+                <span class="tech-item__name">MySQL</span>
+              </div>
+              <div class="tech-item">
+                <div class="tech-item__icon">
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg" alt="Redis" />
+                </div>
+                <span class="tech-item__name">Redis</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tools & Platforms -->
+          <div class="tech-category reveal-right">
+            <h3 class="tech-category__title">Tools & Platforms</h3>
+            <div class="tech-items">
+              <div class="tech-item">
+                <div class="tech-item__icon">
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" />
+                </div>
+                <span class="tech-item__name">Git</span>
+              </div>
+              <div class="tech-item">
+                <div class="tech-item__icon">
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"
+                    alt="GitHub" />
+                </div>
+                <span class="tech-item__name">GitHub</span>
+              </div>
+              <div class="tech-item">
+                <div class="tech-item__icon">
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg"
+                    alt="Docker" />
+                </div>
+                <span class="tech-item__name">Docker</span>
+              </div>
+              <div class="tech-item">
+                <div class="tech-item__icon">
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postman/postman-original.svg"
+                    alt="Postman" />
+                </div>
+                <span class="tech-item__name">Postman</span>
+              </div>
+              <div class="tech-item">
+                <div class="tech-item__icon">
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/intellij/intellij-original.svg"
+                    alt="IntelliJ IDEA" />
+                </div>
+                <span class="tech-item__name">IntelliJ IDEA</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="projects">
+      <div class="container">
+        <div class="section-label reveal-left">Projects</div>
+        <h2 class="section-title reveal-left">Featured work</h2>
+        <p class="section-desc reveal-left">
+          Key backend projects showcasing scalable architecture, secure APIs, and real-world problem-solving —
+          <a href="https://github.com/AkhileshRawatGit" target="_blank" rel="noopener noreferrer">explore more on
+            GitHub</a>.
+        </p>
+
+        <div class="featured-projects">
+          <article class="project-feature reveal-left">
+            <div class="project-feature__head">
+              <div>
+                <h3>MediConnect</h3>
+                <p class="project-feature__date">July 2026 – Present</p>
+                <span class="badge badge--success" style="margin-top: 0.5rem;">Active</span>
+              </div>
+              <a href="https://github.com/AkhileshRawatGit/MedAccess" target="_blank" rel="noopener noreferrer"
+                class="project-feature__link">GitHub ↗</a>
+            </div>
+            <p class="project-feature__intro">
+              A healthcare platform that bridges the gap between customers and local pharmacies by
+              enabling medicine discovery, secure online ordering, digital payments, and efficient
+              pharmacy management.
+            </p>
+            <ul class="project-feature__bullets">
+              <li>Smart location-based search to discover nearby pharmacies with medicine availability.</li>
+              <li>Real-time inventory tracking and price comparison across multiple pharmacies.</li>
+              <li>Secure online payments powered by <strong>Razorpay</strong> for a smooth ordering experience.</li>
+              <li>Dedicated dashboards for customers, pharmacy owners, and administrators with role-based access.</li>
+              <li>Comprehensive pharmacy management including medicines, inventory, images, and order processing.</li>
+              <li>Cloud-based image storage for medicine and pharmacy listings with optimized media management.</li>
+              <li>Built with a scalable backend architecture following RESTful design principles and secure
+                authentication.</li>
+            </ul>
+            <ul class="tags tags--sm">
+              <li>Java</li>
+              <li>Spring Boot</li>
+              <li>Spring Security</li>
+              <li>Spring Data JPA</li>
+              <li>MySQL</li>
+              <li>JWT</li>
+              <li>Razorpay</li>
+              <li>Cloudinary</li>
+              <li>REST APIs</li>
+            </ul>
+          </article>
+
+          <article class="project-feature reveal-right">
+            <div class="project-feature__head">
+              <div>
+                <h3>HiddenUkWeb</h3>
+                <p class="project-feature__date">March 2026 – Present</p>
+                <span class="badge badge--success" style="margin-top: 0.5rem;">Active</span>
+              </div>
+              <a href="https://github.com/AkhileshRawatGit/HiddenUttrakhand" target="_blank" rel="noopener noreferrer"
+                class="project-feature__link">GitHub ↗</a>
+            </div>
+            <p class="project-feature__intro">
+              Tourism discovery platform showcasing hidden and unexplored destinations
+              of Uttarakhand beyond mainstream tourist spots.
+            </p>
+            <ul class="project-feature__bullets">
+              <li>Multi-entity RESTful backend (Place → Hotel → Room → Inventory → Booking) with nested URL patterns and
+                ModelMapper DTO mapping.</li>
+              <li>Dynamic hotel pricing based on demand and season.</li>
+              <li>MinIO object storage for structured hotel image management.</li>
+              <li>Role-based access control with Spring Security and JWT authentication.</li>
+            </ul>
+            <ul class="tags tags--sm">
+              <li>Java</li>
+              <li>Spring Boot</li>
+              <li>Spring Data JPA</li>
+              <li>MySQL</li>
+              <li>MinIO</li>
+              <li>REST APIs</li>
+            </ul>
+          </article>
+
+          <article class="project-feature reveal-left">
+            <div class="project-feature__head">
+              <div>
+                <h3>Coding Contest Platform</h3>
+                <p class="project-feature__date">Aug 2025 – Oct 2025</p>
+                <span class="badge badge--info" style="margin-top: 0.5rem;">Deployed</span>
+              </div>
+              <a href="https://github.com/AkhileshRawatGit/ACMCoding" target="_blank" rel="noopener noreferrer"
+                class="project-feature__link">GitHub ↗</a>
+            </div>
+            <p class="project-feature__intro">
+              Online coding contest platform where users solve and submit programming
+              problems through an interactive browser-based interface.
+            </p>
+            <ul class="project-feature__bullets">
+              <li>REST APIs with Spring Boot and MySQL for problems, submissions, and backend workflows.</li>
+              <li>Monaco Editor and Judge0 API for real-time compilation and execution.</li>
+              <li>Containerized with Docker for consistent deployment.</li>
+              <li>Used to run 4+ ACM coding competitions at university.</li>
+            </ul>
+            <ul class="tags tags--sm">
+              <li>Java</li>
+              <li>Spring Boot</li>
+              <li>MySQL</li>
+              <li>Docker</li>
+              <li>Judge0 API</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="experience">
+      <div class="container">
+        <div class="section-label reveal-left">Experience &amp; Education</div>
+        <h2 class="section-title reveal-left">Background</h2>
+
+        <div class="timeline-block reveal-left">
+          <h3 class="timeline-block__title">Position of Responsibility</h3>
+          <ul class="timeline">
+            <li class="timeline-item">
+              <div class="timeline-item__head">
+                <strong>Web Master, ACM Student Chapter</strong>
+                <span>Sep 2024 – Present</span>
+              </div>
+              <p class="timeline-item__org">Swami Rama Himalayan University, Dehradun</p>
+              <ul class="timeline-item__bullets">
+                <li>Organized and managed 4+ coding competitions using a self-developed contest platform.</li>
+                <li>Coordinated participant flow and smooth event execution.</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+
+        <div class="timeline-block reveal-right">
+          <h3 class="timeline-block__title">Education</h3>
+          <ul class="timeline">
+            <li class="timeline-item">
+              <div class="timeline-item__head">
+                <strong>B.Tech, Computer Science &amp; Engineering</strong>
+                <span>Aug 2023 – Present</span>
+              </div>
+              <p class="timeline-item__org">
+                Swami Rama Himalayan University, Dehradun · CGPA 8.5 · NAAC A+
+              </p>
+            </li>
+            <li class="timeline-item">
+              <div class="timeline-item__head">
+                <strong>Intermediate</strong>
+                <span>May 2023</span>
+              </div>
+              <p class="timeline-item__org">
+                Shri Bharat Mandir Inter College, Uttarakhand · 91%
+              </p>
+            </li>
+            <li class="timeline-item">
+              <div class="timeline-item__head">
+                <strong>High School</strong>
+                <span>May 2021</span>
+              </div>
+              <p class="timeline-item__org">
+                Shri Bharat Mandir Inter College, Uttarakhand · 93%
+              </p>
+            </li>
+          </ul>
+        </div>
+
+        <div class="timeline-block reveal-left">
+          <h3 class="timeline-block__title">Awards &amp; Certifications</h3>
+          <ul class="awards-list">
+            <li>
+              <strong>Information Security Certificate</strong> — Springboard (2026)
+              <span>Network security, CIA Triad, threat modeling, vulnerability assessment.</span>
+            </li>
+            <li>
+              <strong>Winner</strong> — Internal Smart India Hackathon (SIH) 2025, Ideathon
+            </li>
+            <li>
+              <strong>Top 50 Finalist</strong> — SAARHI Hackathon (National Level)
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--contact" id="contact">
+      <div class="container contact">
+        <div class="section-label reveal-left">Contact</div>
+        <h2 class="section-title reveal-left">Let's connect</h2>
+        <p class="section-desc reveal-left">
+          Open to software engineering internships, backend development roles, and collaboration
+          opportunities. Let's build something amazing together!
+        </p>
+        <div class="contact__grid">
+          <div class="contact__info reveal-left">
+            <a class="contact__email" href="mailto:akhileshrawat242@gmail.com">akhileshrawat242@gmail.com</a>
+            <p class="contact__phone">
+              <a href="tel:+918273151173">+91 82731 51173</a>
+            </p>
+            <p class="contact__location">Dehradun, Uttarakhand</p>
+            <div class="contact__social">
+              <a href="https://github.com/AkhileshRawatGit" target="_blank" rel="noopener noreferrer">GitHub</a>
+              <a href="https://www.linkedin.com/in/akhilesh-rawat-613209286/" target="_blank"
+                rel="noopener noreferrer">LinkedIn</a>
+              <a href="https://leetcode.com/u/Akhileshrawat12/" target="_blank" rel="noopener noreferrer">LeetCode</a>
+            </div>
+          </div>
+          <form class="contact-form reveal-right" id="contact-form" novalidate>
+            <label>
+              <span>Name</span>
+              <input type="text" name="name" required autocomplete="name" placeholder="Your name" />
+            </label>
+            <label>
+              <span>Email</span>
+              <input type="email" name="email" required autocomplete="email" placeholder="you@email.com" />
+            </label>
+            <label>
+              <span>Message</span>
+              <textarea name="message" rows="4" required placeholder="Hi Akhilesh, I'd like to talk about…"></textarea>
+            </label>
+            <button type="submit" class="btn btn--primary btn--full">Send message</button>
+            <p class="form-note" role="status" hidden id="form-status"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div>
+        <p>© <span id="year"></span> Akhilesh Rawat · Software Engineer & Java Backend Developer</p>
+        <p style="font-size: 0.75rem; margin-top: 0.25rem; opacity: 0.7;">Built with passion & modern web technologies
+        </p>
+      </div>
+      <div style="display: flex; gap: 1.5rem; align-items: center; flex-wrap: wrap;">
+        <a href="https://github.com/AkhileshRawatGit" target="_blank" rel="noopener noreferrer" class="tooltip"
+          data-tooltip="GitHub">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+          </svg>
+        </a>
+        <a href="https://www.linkedin.com/in/akhilesh-rawat-613209286/" target="_blank" rel="noopener noreferrer"
+          class="tooltip" data-tooltip="LinkedIn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+          </svg>
+        </a>
+        <a href="mailto:akhileshrawat242@gmail.com" class="tooltip" data-tooltip="Email">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M0 3v18h24v-18h-24zm6.623 7.929l-4.623 5.712v-9.458l4.623 3.746zm-4.141-5.929h19.035l-9.517 7.713-9.518-7.713zm5.694 7.188l3.824 3.099 3.83-3.104 5.612 6.817h-18.779l5.513-6.812zm9.208-1.264l4.616-3.741v9.348l-4.616-5.607z" />
+          </svg>
+        </a>
+        <a href="#top" class="footer__top" style="margin-left: 1rem;">Back to top ↑</a>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,23 @@
+RESUME SETUP INSTRUCTIONS
+=========================
+
+To enable the "Download Resume" button on your portfolio:
+
+1. Export your resume as a PDF file
+2. Name it "resume.pdf"
+3. Place it in the /public folder (same location as this file)
+4. Delete this placeholder file
+
+The button link in index.html is already configured to:
+- Point to: /resume.pdf
+- Download as: Akhilesh_Rawat_Resume.pdf
+
+Once you add your resume.pdf file, the download button will work automatically!
+
+Alternative: If you host your resume elsewhere (Google Drive, Dropbox, etc.):
+- Get the direct download link
+- Replace href="/resume.pdf" in index.html with your hosted link
+- Keep the download attribute for the filename
+
+Example:
+<a href="https://your-resume-link.com/resume.pdf" class="btn btn--ghost" download="Akhilesh_Rawat_Resume.pdf">Download Resume</a>
