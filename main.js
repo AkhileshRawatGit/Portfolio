@@ -1,4 +1,214 @@
 // ========================================
+// CODE EDITOR TYPING ANIMATION
+// ========================================
+
+const codeLines = [
+  { num: 1, tokens: [
+    { text: 'public', type: 'keyword' },
+    { text: 'class', type: 'keyword' },
+    { text: 'Developer', type: 'class-name' },
+    { text: '{', type: 'plain' }
+  ]},
+  { num: 2, tokens: [
+    { text: '    private', type: 'keyword' },
+    { text: 'String', type: 'class-name' },
+    { text: 'name', type: 'plain' },
+    { text: '=', type: 'plain' },
+    { text: '"Akhilesh Rawat"', type: 'string' },
+    { text: ';', type: 'plain' }
+  ]},
+  { num: 3, tokens: [
+    { text: '    private', type: 'keyword' },
+    { text: 'String', type: 'class-name' },
+    { text: 'role', type: 'plain' },
+    { text: '=', type: 'plain' },
+    { text: '"Java Developer"', type: 'string' },
+    { text: ';', type: 'plain' }
+  ]},
+  { num: 4, tokens: [] },
+  { num: 5, tokens: [
+    { text: '    public', type: 'keyword' },
+    { text: 'void', type: 'keyword' },
+    { text: 'build', type: 'method' },
+    { text: '()', type: 'plain' },
+    { text: '{', type: 'plain' }
+  ]},
+  { num: 6, tokens: [
+    { text: '        System', type: 'class-name' },
+    { text: '.out.', type: 'plain' },
+    { text: 'println', type: 'method' },
+    { text: '(', type: 'plain' },
+    { text: '"Building', type: 'string' }
+  ]},
+  { num: 7, tokens: [
+    { text: '            scalable', type: 'string' },
+    { text: 'applications"', type: 'string' },
+    { text: ');', type: 'plain' }
+  ]},
+  { num: 8, tokens: [
+    { text: '    }', type: 'plain' }
+  ]},
+  { num: 9, tokens: [] },
+  { num: 10, tokens: [
+    { text: '    public', type: 'keyword' },
+    { text: 'static', type: 'keyword' },
+    { text: 'void', type: 'keyword' },
+    { text: 'main', type: 'method' },
+    { text: '(', type: 'plain' },
+    { text: 'String', type: 'class-name' },
+    { text: '[]', type: 'plain' },
+    { text: 'args)', type: 'plain' },
+    { text: '{', type: 'plain' }
+  ]},
+  { num: 11, tokens: [
+    { text: '        Developer', type: 'class-name' },
+    { text: 'dev', type: 'plain' },
+    { text: '=', type: 'plain' },
+    { text: 'new', type: 'keyword' },
+    { text: 'Developer', type: 'method' },
+    { text: '();', type: 'plain' }
+  ]},
+  { num: 12, tokens: [
+    { text: '        dev.', type: 'plain' },
+    { text: 'build', type: 'method' },
+    { text: '();', type: 'plain' }
+  ]},
+  { num: 13, tokens: [
+    { text: '    }', type: 'plain' }
+  ]},
+  { num: 14, tokens: [
+    { text: '}', type: 'plain' }
+  ]}
+];
+
+class CodeTypingAnimation {
+  constructor() {
+    this.codeElement = document.getElementById('typing-code');
+    if (!this.codeElement) return;
+    
+    this.currentLineIndex = 0;
+    this.currentTokenIndex = 0;
+    this.displayedLines = [];
+    this.isComplete = false;
+    
+    this.startTyping();
+  }
+
+  startTyping() {
+    this.typeNextToken();
+  }
+
+  typeNextToken() {
+    if (this.currentLineIndex >= codeLines.length) {
+      // Animation complete, wait and restart
+      setTimeout(() => {
+        this.reset();
+      }, 3500);
+      return;
+    }
+
+    const currentLine = codeLines[this.currentLineIndex];
+    
+    // If line has no tokens (empty line)
+    if (currentLine.tokens.length === 0) {
+      this.displayedLines[this.currentLineIndex] = { num: currentLine.num, tokens: [] };
+      this.currentLineIndex++;
+      this.currentTokenIndex = 0;
+      this.render();
+      setTimeout(() => this.typeNextToken(), 80);
+      return;
+    }
+
+    // Initialize line if not exists
+    if (!this.displayedLines[this.currentLineIndex]) {
+      this.displayedLines[this.currentLineIndex] = { num: currentLine.num, tokens: [] };
+    }
+
+    // Type current token
+    if (this.currentTokenIndex < currentLine.tokens.length) {
+      const token = currentLine.tokens[this.currentTokenIndex];
+      this.displayedLines[this.currentLineIndex].tokens.push(token);
+      this.currentTokenIndex++;
+      this.render();
+      
+      // Smooth and natural delays
+      let delay = 80; // Base delay
+      
+      // Adjust based on token type and length
+      if (token.type === 'string') {
+        delay = 100; // Strings take slightly longer
+      } else if (token.type === 'keyword' || token.type === 'class-name') {
+        delay = 85; // Keywords medium speed
+      } else if (token.text.length <= 2) {
+        delay = 60; // Quick for short tokens like () {} ;
+      } else if (token.text.length > 15) {
+        delay = 120; // Longer for long strings
+      }
+      
+      setTimeout(() => this.typeNextToken(), delay);
+    } else {
+      // Move to next line with natural pause
+      this.currentLineIndex++;
+      this.currentTokenIndex = 0;
+      setTimeout(() => this.typeNextToken(), 200);
+    }
+  }
+
+  render() {
+    let html = '';
+    
+    this.displayedLines.forEach((line, index) => {
+      if (!line) return;
+      
+      html += `<span class="line-number">${line.num}</span>  `;
+      
+      line.tokens.forEach((token, tokenIndex) => {
+        const className = token.type !== 'plain' ? token.type : '';
+        const isLastToken = (index === this.displayedLines.length - 1) && 
+                           (tokenIndex === line.tokens.length - 1);
+        
+        if (className) {
+          html += `<span class="${className}">${this.escapeHtml(token.text)}`;
+          if (isLastToken && this.currentLineIndex < codeLines.length) {
+            html += `<span class="typing-cursor">|</span>`;
+          }
+          html += `</span> `;
+        } else {
+          html += `${this.escapeHtml(token.text)}`;
+          if (isLastToken && this.currentLineIndex < codeLines.length) {
+            html += `<span class="typing-cursor">|</span>`;
+          }
+          html += ` `;
+        }
+      });
+      
+      html += '\n';
+    });
+    
+    this.codeElement.innerHTML = html;
+  }
+
+  reset() {
+    this.currentLineIndex = 0;
+    this.currentTokenIndex = 0;
+    this.displayedLines = [];
+    this.codeElement.innerHTML = '';
+    setTimeout(() => this.startTyping(), 500);
+  }
+
+  escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+  }
+}
+
+// Initialize code typing animation
+window.addEventListener('load', () => {
+  new CodeTypingAnimation();
+});
+
+// ========================================
 // PARTICLE BACKGROUND SYSTEM
 // ========================================
 
@@ -8,46 +218,47 @@ if (canvas) {
   let particles = [];
   let animationFrameId;
 
-  // Resize canvas to full viewport
   function resizeCanvas() {
     canvas.width = window.innerWidth;
-    canvas.height = Math.max(document.documentElement.scrollHeight, window.innerHeight);
+    canvas.height = window.innerHeight;
   }
 
-  // Particle class
+  // Particle class with smoother movement
   class Particle {
     constructor() {
       this.reset();
       this.y = Math.random() * canvas.height;
-      this.opacity = Math.random() * 0.4 + 0.3;
+      this.opacity = Math.random() * 0.5 + 0.3;
     }
 
     reset() {
       this.x = Math.random() * canvas.width;
       this.y = -10;
-      this.size = Math.random() * 1.5 + 0.8;
-      this.speedY = Math.random() * 0.3 + 0.1;
-      this.speedX = Math.random() * 0.2 - 0.1;
-      this.opacity = Math.random() * 0.4 + 0.3;
-      this.color = Math.random() > 0.9 ? 'rgba(255, 138, 0, ' : 'rgba(255, 255, 255, ';
+      this.size = Math.random() * 2.5 + 1;
+      this.speedY = Math.random() * 1 + 0.8;
+      this.speedX = (Math.random() - 0.5) * 0.8;
+      this.opacity = Math.random() * 0.6 + 0.4;
+      this.color = Math.random() > 0.7 ? 'rgba(255, 138, 0, ' : 'rgba(255, 255, 255, ';
     }
 
     update() {
       this.y += this.speedY;
       this.x += this.speedX;
 
-      // Drift effect
-      this.x += Math.sin(this.y * 0.005) * 0.15;
+      // Smoother drift effect
+      this.x += Math.sin(this.y * 0.005) * 0.3;
 
       // Reset if particle goes off screen
-      if (this.y > canvas.height || this.x < 0 || this.x > canvas.width) {
+      if (this.y > canvas.height + 10 || this.x < -10 || this.x > canvas.width + 10) {
         this.reset();
       }
     }
 
     draw() {
+      ctx.beginPath();
       ctx.fillStyle = this.color + this.opacity + ')';
-      ctx.fillRect(this.x, this.y, this.size, this.size);
+      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+      ctx.fill();
     }
   }
 
@@ -55,14 +266,13 @@ if (canvas) {
   function init() {
     resizeCanvas();
     particles = [];
-    // Reduce particle count for better performance
-    const particleCount = Math.floor((canvas.width * canvas.height) / 25000);
+    const particleCount = Math.floor((canvas.width * canvas.height) / 10000);
     for (let i = 0; i < particleCount; i++) {
       particles.push(new Particle());
     }
   }
 
-  // Animation loop with performance optimization
+  // Smooth animation loop with requestAnimationFrame
   function animate() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     
@@ -90,6 +300,92 @@ if (canvas) {
 }
 
 // ========================================
+// CUSTOM CURSOR
+// ========================================
+
+const cursor = document.createElement('div');
+const cursorDot = document.createElement('div');
+const cursorGlow = document.createElement('div');
+cursor.className = 'custom-cursor';
+cursorDot.className = 'custom-cursor-dot';
+cursorGlow.className = 'custom-cursor-glow';
+document.body.appendChild(cursorGlow);
+document.body.appendChild(cursor);
+document.body.appendChild(cursorDot);
+
+let mouseX = 0;
+let mouseY = 0;
+let cursorX = 0;
+let cursorY = 0;
+let dotX = 0;
+let dotY = 0;
+let glowX = 0;
+let glowY = 0;
+
+document.addEventListener('mousemove', (e) => {
+  mouseX = e.clientX;
+  mouseY = e.clientY;
+  
+  // Instant position for dot
+  dotX = e.clientX;
+  dotY = e.clientY;
+  
+  // Instant position for glow
+  glowX = e.clientX;
+  glowY = e.clientY;
+});
+
+// Smooth cursor follow animation
+function animateCursor() {
+  // Smooth easing for outer cursor
+  cursorX += (mouseX - cursorX) * 0.15;
+  cursorY += (mouseY - cursorY) * 0.15;
+  
+  cursor.style.left = cursorX + 'px';
+  cursor.style.top = cursorY + 'px';
+  
+  cursorDot.style.left = dotX + 'px';
+  cursorDot.style.top = dotY + 'px';
+  
+  cursorGlow.style.left = glowX + 'px';
+  cursorGlow.style.top = glowY + 'px';
+  
+  requestAnimationFrame(animateCursor);
+}
+
+animateCursor();
+
+// Hover effects on interactive elements
+const interactiveElements = document.querySelectorAll('a, button, .btn, input, textarea, .tech-item, .project-feature, .timeline-item');
+
+interactiveElements.forEach(el => {
+  el.addEventListener('mouseenter', () => {
+    cursor.classList.add('cursor-hover');
+    cursorDot.classList.add('cursor-hover');
+    cursorGlow.classList.add('cursor-hover');
+  });
+  
+  el.addEventListener('mouseleave', () => {
+    cursor.classList.remove('cursor-hover');
+    cursorDot.classList.remove('cursor-hover');
+    cursorGlow.classList.remove('cursor-hover');
+  });
+});
+
+// Click effect
+document.addEventListener('mousedown', () => {
+  cursor.classList.add('cursor-click');
+  cursorDot.classList.add('cursor-click');
+  cursorGlow.classList.add('cursor-click');
+});
+
+document.addEventListener('mouseup', () => {
+  cursor.classList.remove('cursor-click');
+  cursorDot.classList.remove('cursor-click');
+  cursorGlow.classList.remove('cursor-click');
+});
+
+// ========================================
 // CORE SETUP
 // ========================================
 
@@ -113,61 +409,6 @@ if (document.readyState === 'complete') {
 } else {
   window.addEventListener('load', initPreloader, { once: true });
   setTimeout(initPreloader, 1500);
-}
-
-// ========================================
-// TYPING ANIMATION
-// ========================================
-
-const typingElement = document.getElementById('typing');
-if (typingElement) {
-  const roles = [
-    'Java Developer',
-    'Backend Engineer',
-    'Aspiring Software Engineer'
-  ];
-  
-  let roleIndex = 0;
-  let charIndex = 0;
-  let isDeleting = false;
-  let typingSpeed = 80;
-
-  function typeEffect() {
-    const currentRole = roles[roleIndex];
-
-    if (isDeleting) {
-      typingElement.textContent = currentRole.substring(0, charIndex - 1);
-      charIndex--;
-      typingSpeed = 40;
-    } else {
-      typingElement.textContent = currentRole.substring(0, charIndex + 1);
-      charIndex++;
-      typingSpeed = 80;
-    }
-
-    if (!isDeleting && charIndex === currentRole.length) {
-      typingSpeed = 2000;
-      isDeleting = true;
-    } else if (isDeleting && charIndex === 0) {
-      isDeleting = false;
-      roleIndex = (roleIndex + 1) % roles.length;
-      typingSpeed = 500;
-    }
-
-    setTimeout(typeEffect, typingSpeed);
-  }
-
-  function startTyping() {
-    typingElement.textContent = '';
-    typeEffect();
-  }
-
-  if (document.readyState === 'complete' || document.readyState === 'interactive') {
-    setTimeout(startTyping, 500);
-  } else {
-    window.addEventListener('DOMContentLoaded', () => setTimeout(startTyping, 500), { once: true });
-    window.addEventListener('load', () => setTimeout(startTyping, 500), { once: true });
-  }
 }
 
 // ========================================
@@ -383,72 +624,7 @@ if (contactForm && formStatus) {
 }
 
 // ========================================
-// CUSTOM CURSOR (Desktop only)
-// ========================================
-
-if (window.matchMedia('(pointer: fine)').matches && window.innerWidth > 768) {
-  let cursor = document.querySelector('.cursor');
-  let cursorX = 0, cursorY = 0;
-
-  if (!cursor) {
-    cursor = document.createElement('div');
-    cursor.className = 'cursor';
-    document.body.appendChild(cursor);
-  }
-
-  document.addEventListener('mousemove', (e) => {
-    cursorX = e.clientX;
-    cursorY = e.clientY;
-    cursor.style.left = cursorX + 'px';
-    cursor.style.top = cursorY + 'px';
-    cursor.classList.add('active');
-  });
-
-  document.addEventListener('mouseleave', () => {
-    cursor.classList.remove('active');
-  });
-
-  // Add hover effect on clickable elements
-  document.querySelectorAll('a, button, input, textarea, .btn').forEach(el => {
-    el.addEventListener('mouseenter', () => {
-      cursor.classList.add('hover');
-    });
-    el.addEventListener('mouseleave', () => {
-      cursor.classList.remove('hover');
-    });
-  });
-}
-
-// ========================================
-// ORB MOUSE TRACKING
-// ========================================
-
-const orbs = document.querySelectorAll('.hero__orb');
-
-document.addEventListener('mousemove', (e) => {
-  if (window.innerWidth <= 768) return; // Disable on mobile
-
-  const mouseX = e.clientX / window.innerWidth;
-  const mouseY = e.clientY / window.innerHeight;
-
-  orbs.forEach((orb, index) => {
-    const offset = (index + 1) * 10;
-    const x = mouseX * offset;
-    const y = mouseY * offset;
-    orb.style.transform = `translate(${x}px, ${y}px)`;
-  });
-});
-
-// ========================================
 // CONSOLE
 // ========================================
 
 console.log('✓ Portfolio loaded successfully');
-
-// ========================================
-// LUCIDE ICONS INITIALIZATION
-// ========================================
-
-if (typeof lucide !== 'undefined') {
-  lucide.createIcons();
-}

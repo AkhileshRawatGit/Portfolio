@@ -14,107 +14,10 @@
     rel="stylesheet" />
   <link rel="stylesheet" href="./styles.css" />
 
-  <!-- Lucide Icons -->
-  <script src="https://unpkg.com/lucide@latest"></script>
-
   <style>
-    /* Utility Classes */
+    /* Utility class — not in styles.css */
     .mono {
       font-family: 'JetBrains Mono', 'Fira Code', monospace;
-    }
-
-    ::selection {
-      background: rgba(255, 138, 0, 0.3);
-      color: #fff;
-    }
-
-    .grid-bg {
-      background-image: radial-gradient(rgba(255, 138, 0, 0.08) 1px, transparent 1px);
-      background-size: 28px 28px;
-    }
-
-    .glow-blob {
-      position: absolute;
-      border-radius: 9999px;
-      filter: blur(80px);
-      pointer-events: none;
-    }
-
-    .orange-gradient-text {
-      background: linear-gradient(180deg, #FFB84D 0%, #FF8A00 55%, #E97300 100%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-      filter: drop-shadow(0 0 24px rgba(255, 138, 0, 0.35));
-    }
-
-    /* Pulse dot on briefcase */
-    .pulse-dot {
-      position: relative;
-    }
-
-    .pulse-dot::after {
-      content: "";
-      position: absolute;
-      inset: -4px;
-      border-radius: 50%;
-      background: rgba(255, 138, 0, 0.35);
-      animation: pulse 1.8s ease-out infinite;
-    }
-
-    @keyframes pulse {
-      0% { transform: scale(0.6); opacity: 0.9; }
-      100% { transform: scale(1.8); opacity: 0; }
-    }
-
-    /* Ghost shadow for code editor */
-    .code-window-ghost {
-      position: absolute;
-      top: -14px;
-      right: -14px;
-      width: 100%;
-      height: 100%;
-      border: 1px solid rgba(255, 138, 0, 0.25);
-      border-radius: 14px;
-      box-shadow: 0 0 60px -20px rgba(255, 138, 0, 0.35);
-    }
-
-    /* Scroll arrow */
-    .scroll-arrow {
-      animation: bounce 2s infinite;
-    }
-
-    @keyframes bounce {
-      0%, 100% { transform: translateY(0); opacity: .7; }
-      50% { transform: translateY(6px); opacity: 1; }
-    }
-
-    /* Entrance animations */
-    .fade-up {
-      opacity: 0;
-      transform: translateY(18px);
-      animation: fadeUp .7s ease forwards;
-    }
-
-    .fade-in-right {
-      opacity: 0;
-      transform: translateX(28px);
-      animation: fadeInRight .9s ease .2s forwards;
-    }
-
-    .delay-1 { animation-delay: .05s; }
-    .delay-2 { animation-delay: .15s; }
-    .delay-3 { animation-delay: .25s; }
-    .delay-4 { animation-delay: .35s; }
-    .delay-5 { animation-delay: .45s; }
-    .delay-6 { animation-delay: .55s; }
-
-    @keyframes fadeUp {
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes fadeInRight {
-      to { opacity: 1; transform: translateX(0); }
     }
   </style>
 </head>
@@ -161,198 +64,122 @@
     <!-- HERO SECTION -->
     <section class="hero" id="hero">
       <div class="container">
-        <div class="hero__grid">
-
-          <!-- LEFT COLUMN -->
-          <div class="reveal-left" style="position: relative;">
-            <!-- Availability Badge -->
-            <div class="avail-pill fade-up delay-1"
-              style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.45rem 0.95rem;">
-              <span class="pulse-dot"
-                style="display: inline-flex; align-items: center; justify-content: center; width: 1rem; height: 1rem; border-radius: 50%; background: rgba(255,138,0,0.15);">
-                <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor" style="color: #FF8A00;">
-                  <path
-                    d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z" />
-                </svg>
-              </span>
-              <span style="font-size: 0.65rem; letter-spacing: 0.16em; font-weight: 600; color: #FF8A00;">
-                AVAILABLE FOR INTERNSHIPS &amp; FULL-TIME ROLES
-              </span>
-            </div>
-
-            <!-- Main Heading -->
-            <h1 class="hero__title">
-              Hi, I'm
-              <span class="hero__name">Akhilesh Rawat</span>
-            </h1>
-
-            <!-- Role -->
-            <p class="hero__role" style="margin-top: 1rem; font-family: 'Plus Jakarta Sans', sans-serif;">
-              <span class="role-pipe">|</span> <span id="typing">Java Developer</span>
-            </p>
-
-            <!-- Description -->
-            <p class="fade-up delay-5"
-              style="margin-top: 1.25rem; max-width: 560px; font-size: 1.125rem; line-height: 1.85; color: rgba(255,255,255,0.65);">
-              I build scalable backend applications using Java, Spring Boot, and MySQL — focused on clean architecture,
-              secure APIs, and efficient system design.
-            </p>
-
-            <!-- Action Buttons -->
-            <div class="fade-up delay-6"
-              style="margin-top: 3rem; display: flex; flex-wrap: wrap; align-items: center; gap: 0.65rem;">
-              <a href="#projects" class="orange-btn"
-                style="display: inline-flex; align-items: center; gap: 0.65rem; font-weight: 600; font-size: 0.9rem; padding: 0.85rem 1.5rem; border-radius: 9999px; color: #1a0e00; text-decoration: none; white-space: nowrap;">
-                <span>View Projects</span>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-                  stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M5 12h14M12 5l7 7-7 7" />
-                </svg>
-              </a>
-
-              <a href="./Software_Engineer.pdf" download="Akhilesh_Rawat_Resume.pdf" class="dark-btn"
-                style="display: inline-flex; align-items: center; gap: 0.65rem; font-weight: 500; font-size: 0.9rem; padding: 0.85rem 1.5rem; border-radius: 9999px; color: rgba(255,255,255,0.9); text-decoration: none; white-space: nowrap;">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-                  stroke-linecap="round" stroke-linejoin="round" style="color: #FF8A00;">
-                  <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3" />
-                </svg>
-                <span>Download Resume</span>
-              </a>
-
-              <a href="#contact" class="outline-btn"
-                style="display: inline-flex; align-items: center; font-weight: 500; font-size: 0.9rem; padding: 0.85rem 1.5rem; border-radius: 9999px; color: rgba(255,255,255,0.9); text-decoration: none; white-space: nowrap;">
-                Contact Me
-              </a>
-            </div>
+        <div class="hero__content">
+          <!-- Availability Badge -->
+          <div class="availability-badge">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="16" y1="2" x2="16" y2="6"></line>
+              <line x1="8" y1="2" x2="8" y2="6"></line>
+              <line x1="3" y1="10" x2="21" y2="10"></line>
+            </svg>
+            AVAILABLE FOR INTERNSHIPS & FULL-TIME ROLES
           </div>
 
-          <!-- RIGHT COLUMN: Code Editor -->
-          <div class="reveal-right" style="position: relative; display: flex; justify-content: center;">
-            <div style="position: relative; width: 100%; max-width: 700px;">
-              <!-- Ghost shadow -->
-              <div class="code-window-ghost"></div>
+          <!-- Main Title -->
+          <h1 class="hero__title">
+            Hi, I'm<br>
+            <span class="hero__name">Akhilesh<br>Rawat</span>
+          </h1>
 
-              <!-- Main code window -->
-              <div class="code-window">
-                <!-- Top bar -->
-                <div
-                  style="display: flex; align-items: center; gap: 0.75rem; padding: 0.875rem 1.25rem; border-bottom: 1px solid rgba(255,255,255,0.05);">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-                    stroke-linecap="round" stroke-linejoin="round" style="color: rgba(255,255,255,0.5);">
-                    <path d="m15 18-6-6 6-6" />
-                  </svg>
-                  <div style="display: flex; align-items: center; gap: 0.5rem; margin-left: 0.25rem;">
-                    <span style="width: 0.75rem; height: 0.75rem; border-radius: 50%; background: #27C93F;"></span>
-                    <span style="width: 0.75rem; height: 0.75rem; border-radius: 50%; background: #FF5F56;"></span>
-                    <span style="width: 0.75rem; height: 0.75rem; border-radius: 50%; background: #FFBD2E;"></span>
-                  </div>
-                </div>
+          <!-- Role -->
+          <p class="hero__role">| Java <span class="hero__role-highlight">Developer</span> |</p>
 
-                <div style="display: flex;">
-                  <!-- Sidebar -->
-                  <div class="code-sidebar"
-                    style="display: flex; flex-direction: column; align-items: center; gap: 1.5rem; padding: 1.5rem 1rem;">
-                    <svg class="sidebar-icon active" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                      stroke="#FF8A00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                      <path d="m18 16 4-4-4-4" />
-                      <path d="m6 8-4 4 4 4" />
-                      <path d="m14.5 4-5 16" />
-                    </svg>
-                    <svg class="sidebar-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                      <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-                      <polyline points="9 22 9 12 15 12 15 22" />
-                    </svg>
-                    <svg class="sidebar-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
-                      <circle cx="12" cy="7" r="4" />
-                    </svg>
-                    <svg class="sidebar-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                      <path
-                        d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z" />
-                    </svg>
-                    <svg class="sidebar-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                      <rect width="20" height="16" x="2" y="4" rx="2" />
-                      <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
-                    </svg>
-                  </div>
-                  <!-- Code area -->
-                  <div class="code-window__code">
-                    <div class="code-line"><span class="tk-line">1</span><span class="code-txt"><span
-                          class="tk-key">public</span> <span class="tk-key">class</span> <span
-                          class="tk-type">Developer</span> <span class="tk-punc">{</span></span></div>
-                    <div class="code-line"><span class="tk-line">2</span><span class="code-txt indent-1"><span
-                          class="tk-key">private</span> <span class="tk-type">String</span> <span
-                          class="tk-var">name</span> <span class="tk-punc">=</span> <span class="tk-str">"Akhilesh Rawat"</span><span class="tk-punc">;</span></span></div>
-                    <div class="code-line"><span class="tk-line">3</span><span class="code-txt indent-1"><span
-                          class="tk-key">private</span> <span class="tk-type">String</span> <span
-                          class="tk-var">role</span> <span class="tk-punc">=</span> <span class="tk-str">"Java Developer"</span><span class="tk-punc">;</span></span></div>
-                    <div class="code-line"><span class="tk-line">4</span><span class="code-txt"></span></div>
-                    <div class="code-line"><span class="tk-line">5</span><span class="code-txt indent-1"><span
-                          class="tk-key">public</span> <span class="tk-type">void</span> <span
-                          class="tk-fn">build</span><span class="tk-punc">()</span> <span
-                          class="tk-punc">{</span></span></div>
-                    <div class="code-line"><span class="tk-line">6</span><span class="code-txt indent-2"><span
-                          class="tk-type">System</span><span class="tk-punc">.</span><span
-                          class="tk-var">out</span><span class="tk-punc">.</span><span class="tk-fn">println</span><span
-                          class="tk-punc">(</span><span class="tk-str">"Building scalable applications"</span><span
-                          class="tk-punc">);</span></span></div>
-                    <div class="code-line"><span class="tk-line">7</span><span class="code-txt indent-1"><span
-                          class="tk-punc">}</span></span></div>
-                    <div class="code-line"><span class="tk-line">8</span><span class="code-txt"></span></div>
-                    <div class="code-line"><span class="tk-line">9</span><span class="code-txt indent-1"><span
-                          class="tk-key">public</span> <span class="tk-key">static</span> <span
-                          class="tk-type">void</span> <span class="tk-fn">main</span><span class="tk-punc">(</span><span
-                          class="tk-type">String</span><span class="tk-punc">[]</span> <span
-                          class="tk-var">args</span><span class="tk-punc">)</span> <span class="tk-punc">{</span></span>
-                    </div>
-                    <div class="code-line"><span class="tk-line">10</span><span class="code-txt indent-2"><span
-                          class="tk-type">Developer</span> <span class="tk-var">dev</span> <span
-                          class="tk-punc">=</span> <span class="tk-key">new</span> <span
-                          class="tk-fn">Developer</span><span class="tk-punc">();</span></span></div>
-                    <div class="code-line"><span class="tk-line">11</span><span class="code-txt indent-2"><span
-                          class="tk-var">dev</span><span class="tk-punc">.</span><span class="tk-fn">build</span><span
-                          class="tk-punc">();</span></span></div>
-                    <div class="code-line"><span class="tk-line">12</span><span class="code-txt indent-1"><span
-                          class="tk-punc">}</span></span></div>
-                    <div class="code-line"><span class="tk-line">13</span><span class="code-txt"><span
-                          class="tk-punc">}</span></span></div>
-                  </div>
-                </div>
-              </div>
+          <!-- Description -->
+          <p class="hero__description">
+            I build scalable backend applications using Java, Spring Boot,<br>
+            and MySQL — focused on clean architecture, secure APIs,<br>
+            and efficient system design.
+          </p>
 
-              <!-- Corner code badge -->
-              <div class="corner-badge"
-                style="position: absolute; bottom: -1.5rem; right: -1.5rem; width: 4rem; height: 4rem; display: flex; align-items: center; justify-content: center;">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FF8A00" stroke-width="2.5"
-                  stroke-linecap="round" stroke-linejoin="round">
-                  <path d="m18 16 4-4-4-4" />
-                  <path d="m6 8-4 4 4 4" />
-                  <path d="m14.5 4-5 16" />
-                </svg>
-              </div>
-            </div>
+          <!-- Action Buttons -->
+          <div class="hero__buttons">
+            <a href="#projects" class="btn btn--primary">
+              View Projects
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+            <a href="./Software_Engineer.pdf" download class="btn btn--secondary">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
+              Download Resume
+            </a>
+            <a href="#contact" class="btn btn--tertiary">Contact Me</a>
           </div>
         </div>
 
-        <!-- Scroll Down -->
-        <!-- <div style="margin-top: 6rem; display: flex; flex-direction: column; align-items: center; gap: 0.75rem;">
-            <span style="font-size: 0.6875rem; letter-spacing: 0.35em; color: rgba(255,255,255,0.6); font-weight: 500;">SCROLL DOWN</span>
-            <svg class="scroll-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FF8A00" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="m6 9 6 6 6-6"/>
+        <!-- Code Editor Window -->
+        <div class="hero__code-window">
+          <div class="code-editor">
+            <!-- Window Controls -->
+            <div class="code-editor__header">
+              <div class="window-dots">
+                <span class="dot dot--close"></span>
+                <span class="dot dot--minimize"></span>
+                <span class="dot dot--maximize"></span>
+              </div>
+            </div>
+
+            <!-- Sidebar Icons -->
+            <div class="code-editor__body">
+              <div class="code-sidebar">
+                <svg class="sidebar-icon active" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="16 18 22 12 16 6"></polyline>
+                  <polyline points="8 6 2 12 8 18"></polyline>
+                </svg>
+                <svg class="sidebar-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                </svg>
+                <svg class="sidebar-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+                <svg class="sidebar-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                  <line x1="16" y1="2" x2="16" y2="6"></line>
+                  <line x1="8" y1="2" x2="8" y2="6"></line>
+                  <line x1="3" y1="10" x2="21" y2="10"></line>
+                </svg>
+                <svg class="sidebar-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+                  <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                </svg>
+              </div>
+
+              <!-- Code Content -->
+              <div class="code-content" id="code-editor-content">
+                <pre><code id="typing-code"></code></pre>
+              </div>
+            </div>
+          </div>
+
+          <!-- Floating Code Icon -->
+          <div class="floating-code-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polyline points="16 18 22 12 16 6"></polyline>
+              <polyline points="8 6 2 12 8 18"></polyline>
             </svg>
-          </div> -->
+          </div>
+
+          <!-- Glow Effect -->
+          <div class="code-glow"></div>
+        </div>
       </div>
+
+      <!-- Scroll Down Indicator -->
+      <!-- bro  -->
     </section>
 
-    <section class="section" id="about">
+    <section class="section" id="about" style="padding-top: calc(var(--header-h) + 4rem);">
       <div class="container about">
         <div class="section-label reveal-left ">About Me</div>
         <h2 class="about__heading reveal-left">
-         Every Line of Code Has a Purpose.
+          Every Line of Code Has a Purpose.
         </h2>
         <div class="about__grid">
           <!-- Profile Image -->
@@ -386,12 +213,6 @@
               learning and writing code that matters — and I'm actively looking for backend development roles where I
               can build systems people rely on.
             </p>
-            <!-- <ul class="about__facts">
-                <li><strong>Location</strong> Dehradun, Uttarakhand</li>
-                <li><strong>Focus</strong> Java · Spring Boot · System Design · DSA</li>
-                <li><strong>Role</strong> Web Master, ACM Student Chapter (SRHU)</li>
-                <li><strong>Status</strong> Open to Internships & Full-time Opportunities</li>
-              </ul> -->
           </div>
         </div>
       </div>
@@ -773,21 +594,19 @@
         </p>
       </div>
       <div style="display: flex; gap: 1.5rem; align-items: center; flex-wrap: wrap;">
-        <a href="https://github.com/AkhileshRawatGit" target="_blank" rel="noopener noreferrer" class="tooltip"
-          data-tooltip="GitHub">
+        <a href="https://github.com/AkhileshRawatGit" target="_blank" rel="noopener noreferrer">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
             <path
               d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
           </svg>
         </a>
-        <a href="https://www.linkedin.com/in/akhilesh-rawat-613209286/" target="_blank" rel="noopener noreferrer"
-          class="tooltip" data-tooltip="LinkedIn">
+        <a href="https://www.linkedin.com/in/akhilesh-rawat-613209286/" target="_blank" rel="noopener noreferrer">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
             <path
               d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
           </svg>
         </a>
-        <a href="mailto:akhileshrawat242@gmail.com" class="tooltip" data-tooltip="Email">
+        <a href="mailto:akhileshrawat242@gmail.com">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
             <path
               d="M0 3v18h24v-18h-24zm6.623 7.929l-4.623 5.712v-9.458l4.623 3.746zm-4.141-5.929h19.035l-9.517 7.713-9.518-7.713zm5.694 7.188l3.824 3.099 3.83-3.104 5.612 6.817h-18.779l5.513-6.812zm9.208-1.264l4.616-3.741v9.348l-4.616-5.607z" />
